@@ -39,7 +39,7 @@ export default function Product(props) {
 
       <div className="col-4">
         <span className="badge bg-secondary">
-          {props.product.price}*{props.product.quantity}
+          {props.product.price*props.product.quantity}
         </span>
       </div>
     </div>

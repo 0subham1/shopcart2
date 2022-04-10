@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
-  const productList = [
+  const products = [
     {
       name: "book1",
       price: 200,
@@ -23,18 +23,18 @@ function App() {
     },
   ];
 
-  let [prodList, setprodList] = useState("");
+  let [productList, setproductList] = useState(products);
   const incQuant = (index) => {
-    let newprodList = [...prodList];
-    newprodList[index].quantity++;
-    setprodList(newprodList);
+    let newproductList = [...productList];
+    newproductList[index].quantity++;
+    setproductList(newproductList);
   };
   const decQuant = (index) => {
-    let newprodList = [...prodList];
-    newprodList[index].quantity > 0 ? 
-    newprodList[index].quantity-- : 
-    newprodList[index].quantity=0
-    setprodList(newprodList);
+    let newproductList = [...productList];
+    newproductList[index].quantity > 0 ? 
+    newproductList[index].quantity-- : 
+    newproductList[index].quantity=0
+    setproductList(newproductList);
   };
 
   return (

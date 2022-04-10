@@ -2,7 +2,7 @@ import React from "react";
 import Product from "./Product";
 
 export default function ProductList(props) {
-  console.log(props);
+ 
   //   map product prop  in productList prop
   return props.productList.map((product, i) => {
     return (
