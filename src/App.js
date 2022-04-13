@@ -24,18 +24,40 @@ function App() {
   ];
 
   let [productList, setproductList] = useState(products);
+  let [totalAmount, settotalAmount] = useState(0);
+
   const incQuant = (index) => {
     let newproductList = [...productList];
+    let newtotalAmount = totalAmount;
+
     newproductList[index].quantity++;
+    newtotalAmount += newproductList[index].price;
+
     setproductList(newproductList);
+    settotalAmount(newtotalAmount);
   };
+
   const decQuant = (index) => {
     let newproductList = [...productList];
-    newproductList[index].quantity > 0 ? 
-    newproductList[index].quantity-- : 
-    newproductList[index].quantity=0
+    let newtotalAmount = totalAmount;
+    
+    if (newproductList[index].quantity > 0) {
+      newproductList[index].quantity--;
+      newtotalAmount -= newproductList[index].price;
+    }
+
+    settotalAmount(newtotalAmount);
     setproductList(newproductList);
   };
+  
+  const resetQuant =()=>{
+    let newproductList = [...productList];
+    newproductList.map((products)=>{
+      products.quantity=0
+    })
+    setproductList(newproductList);
+    settotalAmount(0);
+  }
 
   return (
     <>
@@ -47,7 +69,7 @@ function App() {
           decQuant={decQuant}
         />
       </main>
-      <Footer />
+      <Footer totalAmount={totalAmount} resetQuant={resetQuant}/>
     </>
   );
 }
