@@ -9,7 +9,7 @@ export default function ProductList(props) {
       <Product product={product} key={i} 
       incQuant={props.incQuant} index={i}
       decQuant={props.decQuant} 
-      
+      removeItem={props.removeItem}
       />
     );
   });

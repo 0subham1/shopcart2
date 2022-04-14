@@ -45,7 +45,7 @@ function App() {
       newproductList[index].quantity--;
       newtotalAmount -= newproductList[index].price;
     }
-
+    
     settotalAmount(newtotalAmount);
     setproductList(newproductList);
   };
@@ -58,7 +58,15 @@ function App() {
     setproductList(newproductList);
     settotalAmount(0);
   }
-
+  
+  const removeItem =(index)=>{
+    let newproductList = [...productList];
+    let newtotalAmount = totalAmount;
+    newtotalAmount -= newproductList[index].quantity* newproductList[index].price
+    newproductList.splice(index+1,1)
+    setproductList(newproductList);
+  }
+  
   return (
     <>
       <Navbar />
@@ -67,6 +75,7 @@ function App() {
           productList={productList}
           incQuant={incQuant}
           decQuant={decQuant}
+          removeItem={removeItem}
         />
       </main>
       <Footer totalAmount={totalAmount} resetQuant={resetQuant}/>
